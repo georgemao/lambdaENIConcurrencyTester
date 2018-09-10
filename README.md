@@ -14,7 +14,7 @@ sam deploy --template-file packaged.yaml --stack-name eniTestStack --capabilitie
 
 Then, edit invoke.py to target the Lambda function you just deployed. Enter the concurrency you want to test.
 
-`python
+```python
 def handler():
     #Invoke the test lambda function that has VPC enabled
     response = client.invoke(
@@ -23,7 +23,7 @@ def handler():
     )
     result = json.loads(response['Payload'].read())
     print (result)
-`
+```
 
 Finally, execute the program:
 `bash
