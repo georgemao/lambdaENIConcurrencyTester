@@ -38,3 +38,5 @@ Finally, execute the program:
 ```bash
 python invoke.py
 ```
+After the invoke completes, you should be able to go into you EC2 console, view your Network Interfaces, search for *Lambda* and view all ENI's that were created by your concurrency test.
+
