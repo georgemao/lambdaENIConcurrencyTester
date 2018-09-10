@@ -4,11 +4,11 @@ This project provides an example that demostrates how concurrency impacts ENI sc
 First, deploy the provided sample Lambda function function. Use the provided SAM template (template.yaml) to package and deploy the function.
 It is VPC enabled, so be sure to edit the parameters and specify a *Subnets* and *Security Groups* that exist in your account.
 
-```bash
+```shell
 sam package  --template-file template.yaml --s3-bucket [enter your s3 bucket here] --output-template-file packaged.yaml
 ```
 
-```bash
+```shell
 sam deploy --template-file packaged.yaml --stack-name eniTestStack --capabilities CAPABILITY_IAM
 ```
 
@@ -35,7 +35,7 @@ INVOKE_TIMES = 50
 ```
 
 Finally, execute the program:
-```bash
+```shell
 python invoke.py
 ```
 After the invoke completes, you should be able to go into you EC2 console, view your Network Interfaces, search for *Lambda* and view all ENI's that were created by your concurrency test.
