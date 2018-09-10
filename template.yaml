@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: A function to experiment cold start time when cold starts 
+
+Parameters:
+  SGs:
+    Type: List<AWS::EC2::SecurityGroup::Id>
+    Default: sg-fcb5bf99
+  Subnets:
+    Type: List<AWS::EC2::Subnet::Id>
+    Default: subnet-58fa663d
+
+Resources:
+  enitest:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs6.10
+      Timeout: 20
+      Tracing: Active
+      VpcConfig:
+        SecurityGroupIds: !Ref SGs # - sg-fcb5bf99
+        SubnetIds: !Ref Subnets # - subnet-58fa663d
+          
+      Policies:
+        - Version: '2012-10-17' # Policy Document
+          Statement:
+            - Effect: Allow
+              Action:
+                - ec2:CreateNetworkInterface
+                - ec2:DeleteNetworkInterface
+                - ec2:DescribeNetworkInterfaces
+              Resource: '*'
