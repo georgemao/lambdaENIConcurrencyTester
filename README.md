@@ -6,11 +6,11 @@ It is VPC enabled, so be sure to edit the parameters and specify a *Subnets* and
 
 ```bash
 sam package  --template-file template.yaml --s3-bucket [enter your s3 bucket here] --output-template-file packaged.yaml
-`
+```
 
 ```bash
 sam deploy --template-file packaged.yaml --stack-name eniTestStack --capabilities CAPABILITY_IAM
-`
+```
 
 Then, edit invoke.py to target the Lambda function you just deployed.
 
@@ -32,9 +32,9 @@ Configure the level of concurrency you want to test:
 MAX_WORKERS = 50
 # Number of total requests to simulate
 INVOKE_TIMES = 50 
-`
+```
 
 Finally, execute the program:
 ```bash
 python invoke.py
-`
+```
